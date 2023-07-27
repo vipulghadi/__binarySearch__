@@ -1,0 +1,33 @@
+
+------------------------------------------------------------------------------------------------
+int lessThanmid(int target,vector<vector<int>>& mt)
+    {   int count=0;
+        int c=mt[0].size()-1;
+        for(int i=0;i<mt.size();i++)
+        {
+           while(c>=0 && mt[i][c]>target)c--;
+           count+=(c+1);
+        }
+        return count;
+       
+        
+    }
+    int kthSmallest(vector<vector<int>>& mt, int k) {
+        
+ int m = mt.size(), n = mt[0].size();
+        int s=mt[0][0],e=mt[m-1][n-1],ans=-1;
+
+        while(s<=e)
+        {
+            int mid=s+(e-s)/2;
+            if(lessThanmid(mid,mt)>=k)
+            {
+                ans=mid;
+                e=mid-1;
+            }
+            else s=mid+1;
+        }
+        return ans;
+
+    }
+---------------------------------------------------------------------------------------------------------------
